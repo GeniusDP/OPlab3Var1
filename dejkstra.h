@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 
 void convertSumFormToIndexes(int& x, int& y, int sumForm, int n);
 

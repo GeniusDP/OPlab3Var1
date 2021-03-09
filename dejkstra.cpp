@@ -4,6 +4,21 @@ using namespace std;
 
 #define INF 1000*1000
 
+void convertSumFormToIndexes(int& x, int& y, int sumForm, int n){
+    x = sumForm/n;
+    y = sumForm%n;
+}
+
+void oneRelaxation(int map[][100], int x, int y, int v, int n, vector<int>& d, vector<int>& p, priority_queue < pair<int,int> >& q){
+    if( map[x][y] != -1 ){
+            int to = x*n + y;
+            if (d[v] + 1 < d[to]) {
+        d[to] = d[v] + 1;
+        p[to] = v;
+        q.push (make_pair (-d[to], to));
+      }
+        }
+}
 
 vector< pair<int, int> > dejkstra(int map[][100], int n, int m){
     int st = 5*n+1;
