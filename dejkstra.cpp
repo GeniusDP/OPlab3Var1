@@ -23,7 +23,7 @@ void oneRelaxation(int map[][100], int x, int y, int v, int n, vector<int>& d, v
 vector<int> dejkstra(int map[][100], int n, int m, int st, int fin){
     vector<int> d(n*m, INF), p(n*m, -1);
     d[st] = 0;
-    PreorityQueue < pair<int,int> > q;
+    PreorityQueue < pair<int,int> > q;//making preority queue
 
 
     q.push (make_pair (0, st));
@@ -31,12 +31,12 @@ vector<int> dejkstra(int map[][100], int n, int m, int st, int fin){
         int v = q.top().second;
         int cur_d = q.top().first;
         q.pop();
-        if (cur_d > d[v])continue;
+        if (cur_d > d[v])continue;//v is fictive
 
         int x, y;
         convertSumFormToIndexes(x, y, v, n);
 
-        int len=1;
+        //relaxations
         oneRelaxation(map, x-1, y, v, n, d, p, q);
         oneRelaxation(map, x+1, y, v, n, d, p, q);
         oneRelaxation(map, x, y-1, v, n, d, p, q);
