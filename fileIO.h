@@ -1,8 +1,8 @@
-#include< bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-void readFromFile(int map[][10], int& rows, int& cols)
+void readFromFile(int map[][100], int& rows, int& cols)
 {
     ifstream input("input.txt");
     string str;
