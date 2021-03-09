@@ -31,8 +31,7 @@ int main()
     int stRow=5, stCol=1;
     int finRow=1, finCol=6;
 
-    //readFromFile(map, rows, cols);
-
+    readFromFile(map, rows, cols);
     vector<int> parent = dejkstra(map, rows, cols, stRow*rows+stCol, finRow*rows+finCol);
 
     writeToWindow(map, rows, cols);
