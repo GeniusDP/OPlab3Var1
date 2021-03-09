@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 #include "fileIO.h"
 #include "dejkstra.h"
-
+#include "findWay.h"
 using namespace std;
 
 /*
@@ -33,7 +33,7 @@ int main()
 
     readFromFile(map, rows, cols);
     vector<int> parent = dejkstra(map, rows, cols, stRow*rows+stCol, finRow*rows+finCol);
-
+    findWayFromStartToFinish(parent, finRow*rows+finCol, map, rows, cols);
     writeToWindow(map, rows, cols);
     return 0;
 }
