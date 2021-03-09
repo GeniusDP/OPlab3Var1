@@ -11,12 +11,12 @@ struct Node
 };
 
 template <typename T>
-class Priority_queue
+class PreorityQueue
 {
     Node<T>* head;
     bool dir;
     public:
-        Priority_queue()
+        PreorityQueue()
         {
             head = nullptr;
             dir = false;
@@ -86,11 +86,73 @@ class Priority_queue
         {
             if (head != nullptr)
                 return head->value;
-            else
-                return -1;
         }
         bool empty()
         {
             return head == nullptr;
+        }
+        void pop()
+        {
+            Node<T>* pointer = head;
+            Node<T>* prev = head;
+            while(pointer->left != nullptr || pointer->right != nullptr)
+            {
+                if (pointer->right == nullptr)
+                {
+                    swap(pointer->value, pointer->left->value);
+                    prev = pointer;
+                    pointer = pointer->left;
+                }
+                else
+                if (pointer->left == nullptr)
+                {
+                    swap(pointer->value, pointer->right->value);
+                    prev = pointer;
+                    pointer = pointer->right;
+                }
+                else
+                {
+                    if (pointer->left->value <= pointer->right->value)
+                    {
+                        swap(pointer->value, pointer->left->value);
+                        prev = pointer;
+                        pointer = pointer->left;
+                    }
+                    else
+                    {
+                        swap(pointer->value, pointer->right->value);
+                        prev = pointer;
+                        pointer = pointer->right;
+                    }
+                }
+            }
+            if (pointer == head)
+            {
+                delete head;
+                head = nullptr;
+            }
+            else
+            {
+                if (prev->left == pointer)
+                    prev->left = nullptr;
+                if (prev->right == pointer)
+                    prev->right = nullptr;
+                delete pointer;
+            }
+        }
+        void deleteAll(Node<T>* node)
+        {
+            if (node == nullptr)
+                return;
+            if (node->left != nullptr)
+                deleteAll(node->left);
+            if (node->right != nullptr)
+                deleteAll(node->right);
+            delete node;
+        }
+        ~PreorityQueue()
+        {
+            deleteAll(head);
+            head = nullptr;
         }
 };
