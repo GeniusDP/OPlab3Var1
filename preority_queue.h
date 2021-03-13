@@ -8,18 +8,50 @@ struct Node
     T value;
     Node<T>* left;
     Node<T>* right;
+    Node<T>* prev;
 };
 
 template <typename T>
 class PreorityQueue
 {
     Node<T>* head;
+    int N;
     bool dir;
     public:
         PreorityQueue()
         {
             head = nullptr;
             dir = false;
+            N = 0;
+        }
+
+        Node<T>* getEdge(int N)
+        {
+            int pow2 = 1;
+            while (pow2 <= N)
+                pow2 <<= 1; // pow2 *= 2
+            pow2 >>= 1; // pow2 /= 2
+            int number = N & (pow2 - 1); // N % pow2
+            Node<T>* pointer = head;
+            while (pow2 > 2)
+            {
+                if (number < pow2 / 2)
+                    pointer = pointer->left;
+                else
+                    pointer = pointer->right;
+                pow2 /= 2;
+                number %= pow2;
+            }
+            return pointer;
+        }
+
+        void liftUpNode(Node<T>* pointer)
+        {
+            while (pointer->prev != nullptr && pointer->prev->value > pointer->value)
+            {
+                swap(pointer->value, pointer->prev->value);
+                pointer = pointer->prev;
+            }
         }
 
         void push(T value)
@@ -28,57 +60,27 @@ class PreorityQueue
             newNode->value = value;
             newNode->left = nullptr;
             newNode->right = nullptr;
-            Node<T>* pointer = head;
-            if (pointer == nullptr)
-                head = newNode;
-            else
-            if (pointer->value > value)
+            newNode->prev = nullptr;
+            N++;
+            if (N == 1)
             {
-                newNode->left = head->left;
-                head->left = nullptr;
-                newNode->right = head;
                 head = newNode;
             }
             else
             {
-                while (1)
+                Node<T>* pointer = getEdge(N);
+                if (N % 2 == 0)
                 {
-                    if (pointer->left == nullptr)
-                    {
-                        pointer->left = newNode;
-                        break;
-                    }
-                    if (pointer->right == nullptr)
-                    {
-                        pointer->right = newNode;
-                        break;
-                    }
-                    if (pointer->left->value <= value && pointer->right->value <= value)
-                    {
-                        if (dir)
-                            pointer = pointer->left;
-                        else
-                            pointer = pointer->right;
-                        dir = !dir;
-                    }
-                    else
-                    if (pointer->left->value > value)
-                    {
-                        newNode->left = pointer->left->left;
-                        pointer->left->left = nullptr;
-                        newNode->right = pointer->left;
-                        pointer->left = newNode;
-                        break;
-                    }
-                    else
-                    {
-                        newNode->right = pointer->right->right;
-                        pointer->right->right = nullptr;
-                        newNode->left = pointer->right;
-                        pointer->right = newNode;
-                        break;
-                    }
+                    pointer->left = newNode;
+                    newNode->prev = pointer;
                 }
+                else
+                {
+                    pointer->right = newNode;
+                    newNode->prev = pointer;
+                }
+                pointer = newNode;
+                liftUpNode(pointer);
             }
         }
 

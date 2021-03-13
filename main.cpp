@@ -4,23 +4,6 @@
 #include "findWay.h"
 using namespace std;
 
-/*
-    //������� ��� pair<int, int>
-
-    PreorityQueue q;//������ ������
-
-        q.insert(<���������>, <��� ����������>);
-
-        q.empty();
-
-        q.pop(); - ������� ������ �������
-
-        q.extract(<���������>, <��� ����������>); - ������� ���������� ���� ���-�� � �������
-
-        q.head() - �������� ��������� �� ������ �������
-
-*/
-
 int main()
 {
     int rows, cols;
