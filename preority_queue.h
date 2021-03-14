@@ -91,54 +91,49 @@ class PreorityQueue
         {
             return head == nullptr;
         }
+
+        Node<T>* getMinEdge(Node<T>* node)
+        {
+            if (node == nullptr)
+                return node;
+            if (node->right != nullptr)
+                return ((node->left->value < node->right->value)? node->left : node->right);
+            if (node->left != nullptr)
+                return node->left;
+            return nullptr;
+        }
+
         void pop()
         {
             Node<T>* pointer = head;
-            Node<T>* prev = head;
-            while(pointer->left != nullptr || pointer->right != nullptr)
-            {
-                if (pointer->right == nullptr)
-                {
-                    swap(pointer->value, pointer->left->value);
-                    prev = pointer;
-                    pointer = pointer->left;
-                }
-                else
-                if (pointer->left == nullptr)
-                {
-                    swap(pointer->value, pointer->right->value);
-                    prev = pointer;
-                    pointer = pointer->right;
-                }
-                else
-                {
-                    if (pointer->left->value <= pointer->right->value)
-                    {
-                        swap(pointer->value, pointer->left->value);
-                        prev = pointer;
-                        pointer = pointer->left;
-                    }
-                    else
-                    {
-                        swap(pointer->value, pointer->right->value);
-                        prev = pointer;
-                        pointer = pointer->right;
-                    }
-                }
-            }
-            if (pointer == head)
+            if (N == 1)
             {
                 delete head;
                 head = nullptr;
+                N--;
+                return;
             }
-            else
+            Node<T>* minEdge = getMinEdge(pointer);
+            while (minEdge != nullptr)
             {
-                if (prev->left == pointer)
-                    prev->left = nullptr;
-                if (prev->right == pointer)
-                    prev->right = nullptr;
-                delete pointer;
+                swap(pointer->value, minEdge->value);
+                pointer = minEdge;
+                minEdge = getMinEdge(pointer);
             }
+            Node<T>* node = getEdge(N);
+            if (N % 2 == 0)
+                minEdge = node->left;
+            else
+                minEdge = node->right;
+            swap(pointer->value, minEdge->value);
+            if (minEdge != pointer)
+                liftUpNode(pointer);
+            if (node->left == minEdge)
+                node->left = nullptr;
+            else
+                node->right = nullptr;
+            delete minEdge;
+            N--;
         }
         void deleteAll(Node<T>* node)
         {
