@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="a_star.cpp" />
+		<Unit filename="a_star.h" />
+		<Unit filename="fileIO.cpp" />
+		<Unit filename="fileIO.h" />
+		<Unit filename="findWay.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="preority_queue.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
