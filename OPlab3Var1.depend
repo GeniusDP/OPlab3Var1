@@ -1,27 +1,36 @@
 # depslib dependency file v1.0
-1615326384 source:d:\subjects\labs_op\lab2\oplab3var1\fileio.cpp
+1615919647 source:d:\subjects\labs_op\lab2\oplab3var1\fileio.cpp
 	<bits/stdc++.h>
 
-1615664911 source:d:\subjects\labs_op\lab2\oplab3var1\dejkstra.cpp
+1615919647 source:d:\subjects\labs_op\lab2\oplab3var1\dejkstra.cpp
 	<bits/stdc++.h>
 	"preority_queue.h"
-
-1615703915 d:\subjects\labs_op\lab2\oplab3var1\preority_queue.h
-	<bits/stdc++.h>
-
-1615661511 source:d:\subjects\labs_op\lab2\oplab3var1\main.cpp
-	<bits/stdc++.h>
 	"fileIO.h"
-	"dejkstra.h"
 	"findWay.h"
 
-1615661397 d:\subjects\labs_op\lab2\oplab3var1\fileio.h
+1615920372 d:\subjects\labs_op\lab2\oplab3var1\preority_queue.h
+	<bits/stdc++.h>
+
+1615919647 source:d:\subjects\labs_op\lab2\oplab3var1\main.cpp
+	<bits/stdc++.h>
+	"fileIO.h"
+	"a_star.h"
+	"findWay.h"
+
+1615919647 d:\subjects\labs_op\lab2\oplab3var1\fileio.h
 	<bits/stdc++.h>
 
 1615326384 d:\subjects\labs_op\lab2\oplab3var1\dejkstra.h
 	<bits/stdc++.h>
 	"preority_queue.h"
 
-1615661397 d:\subjects\labs_op\lab2\oplab3var1\findway.h
+1615919647 d:\subjects\labs_op\lab2\oplab3var1\findway.h
 	<bits/stdc++.h>
+
+1615919647 source:d:\subjects\labs_op\lab2\oplab3var1\a_star.cpp
+	<bits/stdc++.h>
+	"preority_queue.h"
+	"fileIO.h"
+
+1615919647 d:\subjects\labs_op\lab2\oplab3var1\a_star.h
 
