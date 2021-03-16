@@ -10,7 +10,7 @@ int main()
     int map[100][100]={};
     //4 3 1 6
     int stRow=1, stCol=8;
-    int finRow=5, finCol=6;
+    int finRow=1, finCol=1;
 
 
 

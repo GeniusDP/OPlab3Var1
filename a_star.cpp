@@ -32,8 +32,7 @@ void relax(int map[][100], int curr, int neighbour_i, int neighbour_j, vector<in
         }
 
         if(!isOpenNow[neighbour_i*n + neighbour_j]){
-
-            open.push(make_pair(neighbour_i*n + neighbour_j, f[neighbour_i*n + neighbour_j]));
+            open.push(make_pair(f[neighbour_i*n + neighbour_j], neighbour_i*n + neighbour_j));
         }
     }
 }
@@ -50,11 +49,11 @@ vector<int> aStar(int map[][100], int n, int m, int st, int fin){
     g[st] = 0;
     f[st] = g[st] + h[st][fin];
     isOpenNow[st] = true;
-    open.push(make_pair(st, f[st]));
+    open.push(make_pair(f[st], st));
     while(!open.empty()){
-        int curr = open.top().first;
+        int curr = open.top().second;
         int neighbour_i, neighbour_j;
-        convertSumFormToIndexes(neighbour_i, neighbour_j, open.top().first, n);
+        convertSumFormToIndexes(neighbour_i, neighbour_j, open.top().second, n);
 
         //extracting current node from the heap
         open.pop();

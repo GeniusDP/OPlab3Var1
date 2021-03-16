@@ -20,7 +20,6 @@ void readFromFile(int map[][100], int& rows, int& cols)
     while (!input.eof())
     {
         getline(input, str);
-        cout << str << endl;
         if (rows == 0)
         {
             for (int i = 0; i < str.size(); i++)
