@@ -11,15 +11,16 @@ void writeToWindow(int map[][100], int n, int m){//to output matrix with way.
     }
 }
 
-
 void readFromFile(int map[][100], int& rows, int& cols)
 {
     ifstream input("input.txt");
     string str;
     rows = 0;
     cols = 0;
-    while (getline(input, str))
+    while (!input.eof())
     {
+        getline(input, str);
+        cout << str << endl;
         if (rows == 0)
         {
             for (int i = 0; i < str.size(); i++)

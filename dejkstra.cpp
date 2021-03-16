@@ -6,10 +6,10 @@
 
 #define INF 1000*1000
 
-void convertSumFormToIndexes(int& x, int& y, int sumForm, int n){
-    x = sumForm/n;
-    y = sumForm%n;
-}
+//void convertSumFormToIndexes(int& x, int& y, int sumForm, int n){
+//    x = sumForm/n;
+//    y = sumForm%n;
+//}
 
 int oneRelaxation(int map[][100], int x, int y, int v, int n, vector<int>& d, vector<int>& p, PreorityQueue < pair<int,int> >& q, int c){
         if( map[x][y] != -1 ){

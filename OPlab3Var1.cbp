@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="dejkstra.cpp" />
+		<Unit filename="dejkstra.h" />
+		<Unit filename="fileIO.cpp" />
+		<Unit filename="fileIO.h" />
+		<Unit filename="findWay.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="preority_queue.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
